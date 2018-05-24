@@ -1,0 +1,79 @@
+#include <gl/glut.h>
+#include <stdio.h>
+
+int x1, y1, x2, y2;
+
+void myInit() {
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(1.0, 1.0, 1.0, 0);
+        
+        glMatrixMode(GL_PROJECTION);
+        gluOrtho2D(0, 500, 0, 500);
+}
+
+void draw_pixel(int x, int y) {
+	    
+        glColor3f(0,0,0);
+		glPointSize(2);
+		glBegin(GL_POINTS);
+        glVertex2i(x, y);
+        glEnd();
+}
+
+void draw_pixel1(int x, int y) {
+        glColor3f(0.611,0.611,0.611);
+        glBegin(GL_POINTS);
+        glVertex2i(x, y);
+        glEnd();
+}
+
+void draw_line(int x1, int x2, int y1, int y2) {
+        glClear(GL_COLOR_BUFFER_BIT);
+        int dx, dy, i, p, po,incx,incy;
+        dx = x2-x1;
+        dy = y2-y1;
+        po = 2*dy-dx;
+        draw_pixel(x1,y1);
+        p = po;
+        incx = x1;
+        incy = y1;
+        for(int k = 0;k<dx;k++)\
+        {
+                if(p>0)
+                {        
+                        incx += 1;
+                        incy += 1;
+                        draw_pixel(incx,incy);
+                        draw_pixel1(incx,incy+1);
+                        p += (2*dy - 2*dx); 
+                }
+                else
+                {
+                        incx += 1;
+                        incy += 0;
+                        draw_pixel(incx,incy);
+                        draw_pixel1(incx,incy-1);
+                        p += 2*dy;
+                }
+        }
+}
+
+void myDisplay() {
+        draw_line(x1, x2, y1, y2);
+        glFlush();
+}
+
+void main(int argc, char **argv) {
+
+        printf( "Enter (x1, y1, x2, y2)\n");
+        scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+
+        glutInit(&argc, argv);
+        glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+        glutInitWindowSize(500, 500);
+        glutInitWindowPosition(0, 0);
+        glutCreateWindow("Bresenham's Line Drawing");
+        myInit();
+        glutDisplayFunc(myDisplay);
+        glutMainLoop();
+}

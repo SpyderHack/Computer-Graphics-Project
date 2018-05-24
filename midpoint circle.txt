@@ -1,0 +1,117 @@
+#include <gl/glut.h>
+#include <stdio.h>
+#include <windows.h>
+
+
+int x1, y1, r1;
+
+void myInit() {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(1.0, 1.0, 1.0, 0);
+	
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(-450,450,-300,300);
+}
+
+void draw_pixel(int x, int y) {
+	glColor3f(0,0,0);
+	glPointSize(2);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
+
+void draw_pixel1(int x, int y) {
+	glColor3f(0.4,0.7,0.9);
+	glPointSize(2);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
+
+void draw_pixel2(int x, int y) {
+	glColor3f(0.8,0.3,0.1);
+	glPointSize(2);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
+
+void draw_pixel3(int x, int y) {
+	glColor3f(0.1,0.6,0.4);
+	glPointSize(2);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+}
+
+
+void draw_circle(int x1, int y1, int r1) {
+	
+	int po, pk, pk1, x, y, r = r1, xo, yo;
+	xo = x1;
+	yo = y1;
+
+	x = 0;
+	y = r;
+	
+	po = 1 - r;
+	pk = po;
+	while(x<y) {
+		draw_pixel(xo+x,yo+y);
+		draw_pixel2(xo+y,yo+x);
+		draw_pixel3(xo+y,yo-x);
+		draw_pixel1(xo+x,yo-y);
+		draw_pixel(xo-x,yo-y);
+		draw_pixel3(xo-y,yo-x);
+		draw_pixel2(xo-y,yo+x);
+		draw_pixel1(xo-x,yo+y);
+		
+		
+		if (pk<0) {
+			x = x + 1;
+			y = y;
+			
+			
+			pk = pk + 2*x + 1;
+		}
+		else {
+			x = x + 1;
+			y = y - 1;
+			pk = pk + 2*x + 1 - 2*y;
+		}
+	}
+	glFlush();
+}
+
+
+
+
+void myDisplay() {
+	glClear(GL_COLOR_BUFFER_BIT);
+	for(int i = 0; i<200; i= i + 10){
+		draw_circle(x1,y1,r1+i);
+		draw_circle(x1,y1,r1+10 + i );
+		draw_circle(x1,y1,r1+20 + i );
+		Sleep(100);
+		draw_circle(x1,y1,r1+30 + i );
+		Sleep(100);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+	glFlush();
+}
+
+void main(int argc, char **argv) {
+
+	printf( "Enter centre coordinates and radius of the circle\n");
+	scanf("%d %d %d", &x1, &y1, &r1);
+
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowSize(900, 600);
+	glutInitWindowPosition(0, 0);
+	glutCreateWindow("Mid point circle drawing");
+	myInit();
+	glutDisplayFunc(myDisplay);
+	glutMainLoop();
+}

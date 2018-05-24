@@ -1,0 +1,73 @@
+#include<GL/glut.h>
+#include<stdio.h>
+int x, y;
+
+void myinit()
+{
+        glClearColor(0, 0, 0, 0);
+        glColor3f(1.0, 1.0, 1.0);
+	//glClear(GL_COLOR_BUFFER_BIT);
+	
+	//glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(0, 500, 0, 500);
+}
+void draw_pixel(int a, int b)
+{
+	glColor3f(0, 0, 0);
+	glPointSize(1);
+	glBegin(GL_POINTS);
+	glVertex2i(a, b);
+	glEnd();
+}
+void draw_fig(int x,int y)
+{  
+	int p0, p;
+	int r = y;
+	int incx = x;
+	int dcry = y;
+	p0 = 5 / 4 - r;
+	p = p0;
+	draw_pixel(x, y);
+	while (x <= y)
+	{
+		if (p < 0)
+		{   
+			incx += 1;
+			draw_pixel(incx, y);
+			p += 2 * incx + 1;
+		}
+		else
+		{
+			incx += 1;
+			dcry -= 1;
+			draw_pixel(incx, dcry);
+			p += 2 * incx + 1 - 2 * y + 2;
+		}
+		x++;
+	}
+	
+	
+}
+
+void draw_circle()
+{
+        glClear(GL_COLOR_BUFFER_BIT);
+	draw_fig(x, y);
+	glFlush();
+}
+
+
+void main(int argc, char **argv)
+{
+	printf("enter the value of x and y>>");
+	scanf_s("%d %d", &x, &y);
+	
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(600, 600);
+	glutInitWindowPosition(0, 0);
+	glutCreateWindow("MY FIRST PROJECT");
+	myinit();
+	glutDisplayFunc(draw_circle);
+	glutMainLoop();
+}

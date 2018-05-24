@@ -1,0 +1,473 @@
+#include<GL/glut.h>
+#include<stdio.h>
+#include<math.h>
+#define pi 3.14
+#include<windows.h>
+int x1, yk, x2, y2, x3, y3, x4, y4;
+//int k,l;
+//int p;
+
+void myinit()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	//glutSwapBuffers();
+	glClearColor(0.0, 0.0, 0.0, 0);
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(-500, 500, -500, 500);
+}
+void pixel1(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(0.376, 0.133, 0.764);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel2(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(0.168, 0.039, 0.960);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel3(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(0, 0, 1);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel4(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(0, 1, 0);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel5(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(0.956, 0.960, 0.039);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel6(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(1, 0.537, 0.039);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel7(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+	glColor3f(1, 0, 0);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void pixel8(int a, int b, int c, int d, int e, int f, int g, int h,int i,int j,int k)
+{
+	glColor3f(k, j, i);
+	glPointSize(1);
+	glBegin(GL_QUADS);
+	glVertex2i(a, b);
+	glVertex2i(c, d);
+	glVertex2i(e, f);
+	glVertex2i(g, h);
+	glEnd();
+	glFlush();
+}
+void rotater(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for(int i=0;i<20;i++)
+	
+	{
+		int z1 = rand()/100;
+		int z2 = rand()/100;
+		int z3 = rand()/100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+	int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+	int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+	int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+	int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+	int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+	int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+	int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+	int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+	pixel1(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel2(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel3(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel4(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel5(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel6(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel7(p, q, r, s, t, u, v, w);
+	Sleep(20);
+	pixel7(p, q, r, s, t, u, v, w);
+	//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+	Sleep(20);
+	
+	//glClear(GL_COLOR_BUFFER_BIT);
+	
+
+	}
+	//}
+}
+void rotater1(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for (int i = 0;i<20;i++)
+
+	{
+		int z1 = rand() / 100;
+		int z2 = rand() / 100;
+		int z3 = rand() / 100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+		int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+		int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+		int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+		int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+		int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+		int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+		int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+		pixel1(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel2(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel3(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel4(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel5(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel6(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel7(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel6(p, q, r, s, t, u, v, w);
+		//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+		Sleep(50);
+
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+
+	}
+	//}
+}
+void rotater2(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for (int i = 0;i<20;i++)
+
+	{
+		int z1 = rand() / 100;
+		int z2 = rand() / 100;
+		int z3 = rand() / 100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+		int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+		int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+		int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+		int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+		int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+		int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+		int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+		pixel1(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel2(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel3(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel4(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel5(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel6(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel7(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel5(p, q, r, s, t, u, v, w);
+		//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+		Sleep(50);
+
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+
+	}
+	//}
+}
+void rotater3(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for (int i = 0;i<20;i++)
+
+	{
+		int z1 = rand() / 100;
+		int z2 = rand() / 100;
+		int z3 = rand() / 100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+		int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+		int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+		int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+		int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+		int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+		int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+		int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+		pixel1(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel2(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel3(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel4(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel5(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel6(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel7(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel4(p, q, r, s, t, u, v, w);
+		//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+		Sleep(50);
+
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+
+	}
+	//}
+}
+void rotater4(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for (int i = 0;i<20;i++)
+
+	{
+		int z1 = rand() / 100;
+		int z2 = rand() / 100;
+		int z3 = rand() / 100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+		int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+		int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+		int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+		int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+		int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+		int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+		int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+		pixel1(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel2(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel3(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel4(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel5(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel6(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel7(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel3(p, q, r, s, t, u, v, w);
+		//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+		Sleep(50);
+
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+
+	}
+	//}
+}
+void rotater5(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for (int i = 0;i<20;i++)
+
+	{
+		int z1 = rand() / 100;
+		int z2 = rand() / 100;
+		int z3 = rand() / 100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+		int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+		int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+		int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+		int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+		int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+		int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+		int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+		pixel1(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel2(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel3(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel4(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel5(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel6(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel7(p, q, r, s, t, u, v, w);
+		Sleep(50);
+		pixel2(p, q, r, s, t, u, v, w);
+		//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+		Sleep(50);
+
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+
+	}
+	//}
+}
+void rotater6(int x1, int yk, int x2, int y2, int x3, int y3, int x4, int y4)
+{
+	int theta = 20;
+	pixel1(x1, yk, x2, y2, x3, y3, x4, y4);
+	Sleep(400);
+	//for(int j=0;j<100;j=j+10)
+	//{
+	//glClear(GL_COLOR_BUFFER_BIT);
+	for (int i = 0;i<20;i++)
+
+	{
+		int z1 = rand() / 100;
+		int z2 = rand() / 100;
+		int z3 = rand() / 100;
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		int p = x1 * cos(i*theta*pi / 180.0) - yk * sin(i*theta*pi / 180.0);
+		int q = x1 * sin(i*theta*pi / 180.0) + yk * cos(i*theta*pi / 180.0);
+		int r = x2 * cos(i*theta*pi / 180.0) - y2 * sin(i*theta*pi / 180.0);
+		int s = x2 * sin(i*theta*pi / 180.0) + y2 * cos(i*theta*pi / 180.0);
+		int t = x3 * cos(i*theta*pi / 180.0) - y3 * sin(i*theta*pi / 180.0);
+		int u = x3 * sin(i*theta*pi / 180.0) + y3 * cos(i*theta*pi / 180.0);
+		int v = x4 * cos(i*theta*pi / 180.0) - y4 * sin(i*theta*pi / 180.0);
+		int w = x4 * sin(i*theta*pi / 180.0) + y4 * cos(i*theta*pi / 180.0);
+		pixel1(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel2(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel3(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel4(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel5(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel6(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel7(p, q, r, s, t, u, v, w);
+		Sleep(100);
+		pixel1(p, q, r, s, t, u, v, w);
+		//pixel8(p, q, r, s, t, u, v, w, 0.956, 0.960, 0.039);
+		Sleep(100);
+
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+
+	}
+	//}
+}
+
+void drawe()
+{
+	rotater(0, 0, 300, 0, 300, 300, 0, 300);
+	rotater1(0, 0, 250, 0, 250, 250, 0, 250);
+	rotater2(0, 0, 200, 0, 200, 200, 0, 200);
+	rotater3(0, 0, 150, 0, 150, 150, 0, 150);
+	rotater4(0, 0, 100, 0, 100, 100, 0, 100);
+	rotater5(0, 0, 50, 0, 50, 50, 0, 50);
+	rotater6(0, 0, 20, 0, 20, 20, 0, 20);
+	glFlush();
+}
+
+void main(int argc, char **argv)
+{
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(1000, 1000);
+	glutInitWindowPosition(20, 20);
+	glutCreateWindow("PROJECT FLOWER");
+	myinit();
+	glutDisplayFunc(drawe);
+	glutMainLoop();
+}
